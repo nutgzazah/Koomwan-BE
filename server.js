@@ -21,6 +21,12 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //ROUTES
+app.get("/",(req,res)=>{
+  res.status(200).send({
+    "success":true,
+    "msg":"Node Server is Running"
+  })
+})
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/suggestion", require("./routes/suggestionRoutes"));
