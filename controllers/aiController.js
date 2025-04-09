@@ -1,9 +1,11 @@
 const axios = require("axios");
+const dotenv = require('dotenv');
+dotenv.config();
 const Suggestion = require("../models/suggestionModel");
 
 exports.predictFromAI = async (req, res) => {
   try {
-    const flaskRes = await axios.post("http://127.0.0.1:5000/predict", req.body);
+    const flaskRes = await axios.post(`${process.env.AI_URL}/predict`, req.body);
 
     const {
       health_score,
